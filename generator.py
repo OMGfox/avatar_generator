@@ -18,36 +18,23 @@ DEFAULT_COLORS = (
 )
 
 
-def random_eyes():
-    path_to_eyes = os.path.join("face_parts", "eyes")
-    eyes = random.choice(os.listdir(path_to_eyes))
-    image = Image.open(os.path.join(path_to_eyes, eyes), mode="r")
+def random_part(part: str):
+    path = os.path.join("avatar_generator", "face_parts", part)
+    part_name = random.choice(os.listdir(path))
+    image = Image.open(os.path.join(path, part_name), mode="r")
     return image.resize((SIZE, SIZE))
 
 
-def random_nose():
-    path_to_nose = os.path.join("face_parts", "nose")
-    nose = random.choice(os.listdir(path_to_nose))
-    image = Image.open(os.path.join(path_to_nose, nose), mode="r")
-    return image.resize((SIZE, SIZE))
-
-
-def random_mouth():
-    path_to_mouth = os.path.join("face_parts", "mouth")
-    mouth = random.choice(os.listdir(path_to_mouth))
-    image = Image.open(os.path.join(path_to_mouth, mouth), mode="r")
-    return image.resize((SIZE, SIZE))
-
-
-def create_random_avatar():
+def create_random_avatar() -> Image:
     image = Image.new(mode="RGB", size=(SIZE, SIZE), color=random.choice(DEFAULT_COLORS))
-    eyes = random_eyes()
-    nose = random_nose()
-    mouth = random_mouth()
+    eyes = random_part(part="eyes")
+    nose = random_part(part="nose")
+    mouth = random_part(part="mouth")
     image.paste(eyes, (0, 0), eyes)
     image.paste(eyes, (0, 0), nose)
     image.paste(eyes, (0, 0), mouth)
     image.show()
+    # return image
 
 
 create_random_avatar()
