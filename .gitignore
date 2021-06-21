@@ -131,6 +131,7 @@ dmypy.json
 # image types .png .jpg
 *.png
 *.jpg
+!avatar_0*.png
 
 # temp files
 *~
