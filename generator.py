@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import random
 
@@ -19,7 +21,8 @@ DEFAULT_COLORS = (
 
 
 def random_part(part: str):
-    path = os.path.join("avatar_generator", "face_parts", part)
+#    path = os.path.join("avatar_generator", "face_parts", part)
+    path = os.path.join("face_parts", part)
     part_name = random.choice(os.listdir(path))
     image = Image.open(os.path.join(path, part_name), mode="r")
     return image.resize((SIZE, SIZE))
@@ -33,8 +36,10 @@ def create_random_avatar() -> Image:
     image.paste(eyes, (0, 0), eyes)
     image.paste(eyes, (0, 0), nose)
     image.paste(eyes, (0, 0), mouth)
-    image.show()
-    # return image
+    return image
 
 
-create_random_avatar()
+if __name__ == "__main__":
+
+    avatar = create_random_avatar()
+    avatar.save("avatar.png", formate="png")
