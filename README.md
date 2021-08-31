@@ -1,5 +1,5 @@
 # An Avatar Generator
-The script just generate an funny avatar from presets and  save it to work directory.
+The script just generate a funny avatar from presets and  save it to work directory.
 
 # Preparing
 You need install requirements:
